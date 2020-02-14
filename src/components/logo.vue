@@ -1,6 +1,6 @@
 <template>
   <div id="app-logo">
-    <img v-no-drag class="logo" src="@/assets/logo.png" />
+    <img v-no-drag class="logo" src="/assets/logo.png" />
   </div>
 </template>
 

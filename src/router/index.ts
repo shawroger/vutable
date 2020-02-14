@@ -25,7 +25,7 @@ const router = new VueRouter({
 
 // @ts-ignore
 router.beforeEach((to: Route, from: Route, next) => {
-	document.title = to.meta.title;
+	//document.title = to.meta.title;
 	next();
 });
 export default router;

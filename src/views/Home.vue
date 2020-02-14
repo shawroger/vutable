@@ -6,7 +6,7 @@
 
 <script>
 import { createComponent } from "@vue/composition-api";
-import homeMain from "@/components/Home/main.vue";
+import homeMain from "/components/Home/main.vue";
 
 export default createComponent({
 	name: "page-home",

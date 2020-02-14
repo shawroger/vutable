@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { title } from "@/utils/config";
+import { title } from "/utils/config";
 import { createComponent } from "@vue/composition-api";
 
 export default createComponent({
