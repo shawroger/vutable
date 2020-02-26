@@ -1,35 +1,7 @@
 <template>
 	<div id="home-main">
 		<app-logo></app-logo>
-		<p>
-			Welcome to use Vue Preset Rarcel from
-			<a href="https://github.com/shawroger/vue-preset-parcel" target="_blank"
-				>shawroger</a
-			>
-		</p>
-		<span>git clone https://github.com/shawroger/vue2.0-preset.git</span>
-		<el-collapse value="1" style="width: 80%">
-			<el-collapse-item title="使用Parcel打包" name="1">
-				<div>
-					改用parcel，依赖项更少，打包更迅速
-				</div>
-			</el-collapse-item>
-			<el-collapse-item title="使用TypeScript" name="2">
-				<div>
-					在vue3.0出现前夕，采用最新的composition-api，立刻享受使用TypeScript的快感
-				</div>
-			</el-collapse-item>
-			<el-collapse-item title="装备齐全，开箱即用" name="3">
-				<div>
-					直接安装最新的vue全家桶，vue-router,vuex开箱即用
-				</div>
-			</el-collapse-item>
-			<el-collapse-item title="高级配备，无需担忧" name="4">
-				<div>
-					安装element-ui和axios，前端操作无需担忧，默认less.js自动补全前缀，省心省力
-				</div>
-			</el-collapse-item>
-		</el-collapse>
+	
 	</div>
 </template>
 
@@ -50,7 +22,7 @@ export default createComponent({
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 #home-main {
 	margin-top: 20px;
 	display: flex;

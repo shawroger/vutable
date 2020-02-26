@@ -7,6 +7,10 @@
 			:router="true"
 		>
 			<el-menu-item>
+				<img v-no-drag :src="logoUrl" />
+			</el-menu-item>
+
+			<el-menu-item>
 				<a href="./" style="text-decoration: none;font-size: 20px">
 					{{ title }}
 				</a>
@@ -54,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import { title } from "../utils/config";
+import { title, logoUrl } from "../utils/config";
 import { useWindow } from "../utils/useHooks";
 import { createComponent, onMounted, ref } from "@vue/composition-api";
 import appLogo from "./logo.vue";
@@ -88,30 +92,46 @@ export default createComponent({
 			index,
 			menuClick,
 			showMenu,
-			iconClick
+			iconClick,
+			logoUrl
 		};
 	}
 });
 </script>
 
-<style lang="less" scoped>
-.logo {
-	width: 55px;
-	padding-right: 5px;
-	margin-right: 5px;
-	position: relative;
-	top: -8px;
-}
+<style lang="less">
+#app-nav {
+	.el-menu-item:nth-child(1) {
+		padding-right: 0;
+		img {
+			width: 45px;
+			height: 52px;
+		}
+	}
 
-.right-menu {
-	float: right !important;
-}
+	@media screen and (max-width: 748px) {
+		.el-menu-item:nth-child(1) {
+			display: none;
+		}
+	}
+	.logo {
+		width: 55px;
+		padding-right: 5px;
+		margin-right: 5px;
+		position: relative;
+		top: -8px;
+	}
 
-.icon {
-	font-size: 35px;
-	position: relative;
-	top: 15px;
-	color: LightGray;
-	right: 5px;
+	.right-menu {
+		float: right !important;
+	}
+
+	.icon {
+		font-size: 35px;
+		position: relative;
+		top: 15px;
+		color: LightGray;
+		right: 5px;
+	}
 }
 </style>

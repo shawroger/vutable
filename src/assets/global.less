@@ -1,0 +1,43 @@
+* {
+	padding: 0;
+	margin: 0;
+	outline: none !important;
+}
+
+html,
+body {
+	font-size: 16px;
+}
+
+@0px: 0px;
+@marginList: 2, 5, 8, 10, 12, 16, 18, 20, 25, 30;
+
+.ml-loop(@list, @i:1, @val:extract(@list, @i)) when (length(@list) >= @i) {
+	.mt-@{val} {
+		margin-top: @val + @0px;
+	}
+	.mb-@{val} {
+		margin-bottom: @val + @0px;
+	}
+	.ml-@{val} {
+		margin-left: @val + @0px;
+	}
+	.mr-@{val} {
+		margin-right: @val + @0px;
+	}
+
+	.pt-@{val} {
+		padding-top: @val + @0px;
+	}
+	.pb-@{val} {
+		padding-bottom: @val + @0px;
+	}
+	.pl-@{val} {
+		padding-left: @val + @0px;
+	}
+	.pr-@{val} {
+		padding-right: @val + @0px;
+	}
+	.ml-loop(@list, (@i+1));
+}
+.ml-loop(@marginList);

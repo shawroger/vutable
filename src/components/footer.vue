@@ -18,13 +18,13 @@ export default createComponent({
 });
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 #app-footer {
 	padding: 20px;
-}
-p {
-	font-size: 15px;
-	text-align: center;
-	color: #c0c4cc;
+	p {
+		font-size: 15px;
+		text-align: center;
+		color: #c0c4cc;
+	}
 }
 </style>
