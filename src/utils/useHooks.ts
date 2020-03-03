@@ -1,4 +1,4 @@
-import { Ref, ref, onMounted, onUnmounted } from "@vue/composition-api";
+import { Ref, ref, onMounted, onUnmounted, toRefs } from "@vue/composition-api";
 
 /*
 	useWindow
@@ -120,4 +120,59 @@ export function useScript(params: {
 			loadScriptByText(params.text);
 		}
 	});
+}
+
+export function useCountDown(target: string, useFullDay: boolean = true) {
+	let timeHandler: number;
+	const targetDate = new Date(target).getTime();
+
+	const monthAddToDay = (month: number) => {
+		let result: number = 0;
+		const monthDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+		for (let i = 0; i < month; i++) {
+			result += monthDays[i];
+		}
+
+		return result;
+	};
+	const compareDate = () => {
+		const today = new Date().getTime();
+		const compareTime = new Date(targetDate - today);
+		return {
+			month: compareTime.getMonth() + 1,
+			day: useFullDay
+				? monthAddToDay(compareTime.getMonth()) + compareTime.getDate() -1
+				: compareTime.getDate(),
+			hour: compareTime.getDate(),
+			minute: compareTime.getMinutes(),
+			second: compareTime.getSeconds()
+		};
+	};
+
+	const countDown = reactive({
+		month: 0,
+		day: 0,
+		hour: 0,
+		minute: 0,
+		second: 0
+	});
+
+	onMounted(() => {
+		timeHandler = setInterval(() => {
+			const getCompareDate = compareDate();
+			countDown.month = getCompareDate.month;
+			countDown.day = getCompareDate.day;
+			countDown.hour = getCompareDate.hour;
+			countDown.minute = getCompareDate.minute;
+			countDown.second = getCompareDate.second;
+		});
+	});
+
+	onUnmounted(() => {
+		clearInterval(timeHandler);
+	});
+
+	return {
+		...toRefs(countDown)
+	};
 }
