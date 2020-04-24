@@ -1,7 +1,19 @@
 {
 	"name": "vutable",
 	"author": "shawroger",
-	"version": "0.1.0",
+	"version": "0.2.0",
+	"main": "./src/main.ts",
+	"files": [
+		"dist",
+		"docs",
+		"src",
+		"public",
+		".gitignore",
+		"postcss.config.js",
+		"tsconfig.json",
+		"package-lock.json",
+		"README.md"
+	],
 	"homepage": "https://github.com/shawroger/vutable",
 	"scripts": {
 		"dev": "parcel src/index.html",
