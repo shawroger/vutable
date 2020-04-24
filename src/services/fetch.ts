@@ -1,16 +1,8 @@
 import axios, { AxiosResponse } from "axios";
+import { csvToArray } from "rexine";
 
-interface Reponse {
-	ret: number;
-	msg: string;
+export async function getCsvFile(fileAddress: string) {
+	const res = await axios.get(fileAddress);
+	return csvToArray(res.data);
 }
-export async function fetch(url: string, req: string) {
-	const base_url = "";
-	const res = await axios.get(base_url + url, {
-		params: {
-			req
-		}
-	});
 
-	return res;
-}

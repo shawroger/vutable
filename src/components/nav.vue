@@ -1,137 +1,57 @@
 <template>
 	<div id="app-nav">
-		<el-menu
-			:default-active="index"
-			class="el-menu-demo"
-			mode="horizontal"
-			:router="true"
-		>
-			<el-menu-item>
-				<img v-no-drag :src="logoUrl" />
-			</el-menu-item>
-
+		<el-menu default-active="0" class="el-menu-demo" mode="horizontal">
 			<el-menu-item>
 				<a href="./" style="text-decoration: none;font-size: 20px">
 					{{ title }}
 				</a>
 			</el-menu-item>
 
-			<template v-if="width > 750">
-				<el-menu-item
-					:index="item.router"
-					:route="item.router"
-					class="right-menu"
-					v-for="item in nav"
-					:key="item.name"
-					>{{ item.name }}</el-menu-item
-				>
-			</template>
-
-			<template v-else>
-				<i class="el-icon-menu icon right-menu" @click="iconClick"></i>
-			</template>
+			<el-menu-item
+				class="right-menu"
+				@click="
+					() => {
+						$emit('search-click');
+					}
+				"
+				><i class="el-icon-search"></i
+			></el-menu-item>
 		</el-menu>
-
-		<el-drawer
-			:visible.sync="showMenu"
-			direction="ltr"
-			:title="title"
-			size="100%"
-		>
-			<el-menu
-				:default-active="index"
-				class="el-menu-vertical-demo"
-				:router="true"
-				@select="menuClick"
-			>
-				<app-logo></app-logo>
-				<el-menu-item
-					:index="item.router"
-					:route="item.router"
-					v-for="item in nav"
-					:key="item.name"
-					>{{ item.name }}</el-menu-item
-				>
-			</el-menu>
-		</el-drawer>
 	</div>
 </template>
 
 <script lang="ts">
-import { title, logoUrl } from "../utils/config";
-import { useWindow } from "../utils/useHooks";
 import { createComponent, onMounted, ref } from "@vue/composition-api";
-import appLogo from "./logo.vue";
+import { tryGlobalConfig } from "../utils/methods";
 export default createComponent({
 	name: "app-nav",
-	components: {
-		appLogo
-	},
-	setup(props, ctx) {
-		const nav = [
-			{
-				name: "首页",
-				router: "/"
-			}
-		];
-		const { width } = useWindow();
-		const index = ctx.root.$route.path;
-		const showMenu = ref(false);
-		function iconClick() {
-			showMenu.value = !showMenu.value;
-		}
-		function menuClick(key: string) {
-			if (key) {
-				iconClick();
-			}
-		}
+	setup() {
+		const title = tryGlobalConfig(["title"], window.document.title);
 		return {
-			nav,
 			title,
-			width,
-			index,
-			menuClick,
-			showMenu,
-			iconClick,
-			logoUrl
 		};
-	}
+	},
 });
 </script>
 
-<style lang="less">
-#app-nav {
-	.el-menu-item:nth-child(1) {
-		padding-right: 0;
-		img {
-			width: 45px;
-			height: 52px;
-		}
-	}
+<style scoped>
+.logo {
+	width: 55px;
+	padding-right: 5px;
+	margin-right: 5px;
+	position: relative;
+	top: -8px;
+}
 
-	@media screen and (max-width: 748px) {
-		.el-menu-item:nth-child(1) {
-			display: none;
-		}
-	}
-	.logo {
-		width: 55px;
-		padding-right: 5px;
-		margin-right: 5px;
-		position: relative;
-		top: -8px;
-	}
+.right-menu {
+	float: right !important;
+}
 
-	.right-menu {
-		float: right !important;
-	}
-
-	.icon {
-		font-size: 35px;
-		position: relative;
-		top: 15px;
-		color: LightGray;
-		right: 5px;
-	}
+.icon {
+	font-size: 35px;
+	position: relative;
+	top: 15px;
+	color: LightGray;
+	right: 5px;
 }
 </style>
