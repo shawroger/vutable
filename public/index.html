@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<title>Vutable Demo</title>
+	</head>
+	<body>
+		<div id="app"></div>
+
+		<script>
+			 window.$vutable = {
+                index: true, // 使用序号
+                footer: true, //显示页脚
+                target: "#app", //渲染 div 的 id
+                csv: "./data.csv", // 读取的文件路径
+                title: "Vutable Demo", // 标题
+                /*
+                    label: [], // 每一列的标题
+                    usedCols: [], // 控制显示列数
+                    searchMode: [], // 每一列的检索方式
+
+                    beforeInit() {}, // 函数钩子 - 读取文件完成时
+                    onload() {}, // 函数钩子 - 渲染完成时
+                    onchange() {}, // 函数钩子 - 检索变动时
+                */
+            };
+		</script>
+		<script src="../src/main.ts"></script>
+	</body>
+</html>

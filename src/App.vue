@@ -1,10 +1,8 @@
 <template>
 	<div id="app">
 		<app-nav @search-click="searchClick"></app-nav>
-		<app-list
-			@search-close="searchClose"
-			:popoverStatus="popoverStatus"
-		></app-list>
+		<app-table @search-close="searchClose" :popoverStatus="popoverStatus">
+		</app-table>
 		<app-footer></app-footer>
 	</div>
 </template>
@@ -13,12 +11,12 @@
 import { createComponent, ref } from "@vue/composition-api";
 
 import appNav from "./components/nav.vue";
-import appList from "./components/list.vue";
+import appTable from "./components/table.vue";
 import appFooter from "./components/footer.vue";
 
 export default createComponent({
 	name: "app",
-	components: { appNav, appList, appFooter },
+	components: { appNav, appTable, appFooter },
 	setup() {
 		const popoverStatus = ref(false);
 
@@ -37,4 +35,3 @@ export default createComponent({
 	},
 });
 </script>
-

@@ -1,8 +1,10 @@
 {
 	"name": "vutable",
 	"author": "shawroger",
-	"version": "0.2.0",
-	"main": "./src/main.ts",
+	"description": "A easy and cool tool to transform a csv file into webpage",
+	"version": "1.0.0",
+	"main": "src/main.ts",
+	"unpkg": "dist/vutable.js",
 	"files": [
 		"dist",
 		"docs",
@@ -16,8 +18,8 @@
 	],
 	"homepage": "https://github.com/shawroger/vutable",
 	"scripts": {
-		"dev": "parcel src/index.html",
-		"build": "parcel build src/index.html --no-content-hash --no-source-maps"
+		"dev": "parcel public/index.html",
+		"build": "parcel build public/index.html --no-content-hash --no-source-maps"
 	},
 	"dependencies": {
 		"@vue/composition-api": "^0.3.4",
@@ -37,6 +39,7 @@
 		"parcel-plugin-static-files-copy": "^2.3.1",
 		"postcss": "^7.0.27",
 		"typescript": "~3.5.3",
+		"parcel-bundler": "^1.12.4",
 		"vue-template-compiler": "^2.6.10"
 	},
 	"eslintConfig": {
@@ -58,6 +61,7 @@
 	],
 	"staticFiles": {
 		"staticPath": "public",
-		"watcherGlob": "**"
+		"watcherGlob": "**",
+		"excludeGlob": "**/*.html"
 	}
 }

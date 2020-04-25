@@ -1,10 +1,13 @@
-export function deleteIndex(arr: any[], cutIndex: number[]): any[] {
+export function remainIndex(arr: any[], remainIndex: number[]): any[] {
+	if (!remainIndex || remainIndex.length === 0) {
+		return arr;
+	}
 	const result: any[] = [];
-	arr.forEach((item, index) => {
-		if (!cutIndex.includes(index)) {
-			result.push(item);
+	for (let index = 0; index < arr.length; index++) {
+		if (remainIndex.includes(index)) {
+			result.push(arr[index]);
 		}
-	});
+	}
 
 	return result;
 }
@@ -17,6 +20,10 @@ export function tryGlobalConfig(
 	let result: any = (window as any).$vutable;
 	if (result === undefined) {
 		return defaultValue;
+	}
+
+	if (scopeName.length === 0) {
+		return result;
 	}
 	for (let name of scopeName) {
 		if (result[name] !== undefined) {
