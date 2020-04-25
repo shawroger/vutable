@@ -30,7 +30,7 @@ git clone https://github.com/shawroger/vutable.git
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
 		<title>Vutable Demo</title>
-		<link rel="stylesheet" href="//unpkg.com/vutable/dist/vutable.css" />
+		<link rel="stylesheet" href="https://unpkg.com/vutable/dist/main.css" />
 	</head>
 	<body>
 		<div id="app"></div>
@@ -52,7 +52,7 @@ git clone https://github.com/shawroger/vutable.git
 				*/
 			};
 		</script>
-		<script src="//unpkg.com/vutable/dist/vutable.js"></script>
+		<script src="https://unpkg.com/vutable/dist/main.js"></script>
 	</body>
 </html>
 ```
@@ -342,12 +342,12 @@ footer: boolean;
 ```js
 {
 	root, // 即为 window.$vutable
-		width, // 页面宽度
-		pageSize, // 总页数
-		tableData, // 转换后的数据
-		searchMode, // 所有已配置的检索模式
-		originData, // 原始文件内容
-		currentType, // 当前的检索模式
-		currentPage; // 当前页数
+	width, // 页面宽度
+	pageSize, // 总页数
+	tableData, // 转换后的数据
+	searchMode, // 所有已配置的检索模式
+	originData, // 原始文件内容
+	currentType, // 当前的检索模式
+	currentPage; // 当前页数
 }
 ```

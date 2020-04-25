@@ -89,7 +89,7 @@
 				style="width: 100%"
 			>
 				<el-table-column
-					v-if="useIndex"
+					v-if="useIndex && tableData.length > 0"
 					type="index"
 					label="#"
 					align="center"
@@ -194,7 +194,7 @@ export default createComponent({
 			default: false,
 		},
 	},
-	setup() {
+	setup(_props, ctx) {
 		const {
 			root,
 			width,
@@ -210,7 +210,7 @@ export default createComponent({
 			currentPage,
 			changeMode,
 			changeHooks,
-		} = useCsv();
+		} = useCsv(ctx);
 
 		return {
 			width,

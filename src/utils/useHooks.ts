@@ -6,6 +6,7 @@ import {
 	watch,
 	reactive,
 	computed,
+	SetupContext,
 } from "@vue/composition-api";
 import { arrayToJson } from "rexine";
 import { getCsvFile } from "../services/fetch";
@@ -36,7 +37,7 @@ export function useWindow(): {
 	return { width, height };
 }
 
-export function useCsv() {
+export function useCsv(ctx: SetupContext) {
 	const pageSize = ref(10);
 	const currentPage = ref(1);
 	const { width } = useWindow();
@@ -235,6 +236,7 @@ export function useCsv() {
 
 	function vutableInit(data: string[][]) {
 		label.value = setLabel !== null ? setLabel : data[0];
+		
 
 		if (useCols !== null && typeof useCols[0] === "number") {
 			label.value = remainIndex(label.value, useCols);
@@ -274,7 +276,10 @@ export function useCsv() {
 	}
 
 	(async () => {
-		const data = await getCsvFile(csvFile);
+		const data = await getCsvFile(csvFile).catch(err => {
+			ctx.root.$message.error(`来源 ${csvFile} 加载数据失败`)
+		});
+		
 		if (beforeInit !== null) {
 			try {
 				beforeInit(data);
@@ -282,7 +287,7 @@ export function useCsv() {
 				throw err;
 			}
 		}
-		vutableInit(data);
+		vutableInit(data as string[][]);
 	})();
 
 	return {
