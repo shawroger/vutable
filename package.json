@@ -2,7 +2,7 @@
 	"name": "vutable",
 	"author": "shawroger",
 	"description": "A easy and cool tool to transform a csv file into webpage",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"main": "src/main.ts",
 	"unpkg": "dist/vutable.js",
 	"files": [
